@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
     iniciarSesion(form: NgForm) {
       this.usuarioService.iniciarSesion(this.usuario).subscribe((res) => {
-        console.log(res);
+        // console.log(res);
         this.identidad = res.usuario;
 
         if (!this.identidad || !this.identidad._id) {
@@ -42,13 +42,15 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('identidad', JSON.stringify(this.identidad));
           this.obtenerToken();
         }
+        // redireccionamos
+        this.router.navigate(['/inicio']);
       }
       , error => console.log(error as any));
     }
 
     obtenerToken() {
       this.usuarioService.iniciarSesion(this.usuario, 'true').subscribe((res) => {
-        console.log(res);
+        // console.log(res);
         this.token = res.token;
 
         if (this.token.lenght <= 0 ) {

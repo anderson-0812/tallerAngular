@@ -1,10 +1,14 @@
 import { LoginComponent } from './components/login/login.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 const routes: Routes = [
   // Asignamos la ruta y componentes 
-  {path: 'login', component: LoginComponent}
+  {path: '', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'inicio', component: InicioComponent},
+  {path: '**',component: InicioComponent}// me sirve que si pongo /cualquiercosa me redireccione a inicio
 ];
 
 @NgModule({
