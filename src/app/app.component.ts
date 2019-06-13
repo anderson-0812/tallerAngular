@@ -9,7 +9,8 @@ import { Glob } from 'glob';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [UserService]// siempre agregamos elproveedor
 })
 export class AppComponent {
   public identidad: string;
