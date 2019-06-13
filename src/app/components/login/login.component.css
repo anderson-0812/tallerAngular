@@ -1,0 +1,30 @@
+.wrapper{
+    background: #0072AB;
+    width: 560px;
+    margin: 12% auto;
+    padding: 20px 0;
+}
+
+.form-group{
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.ph-area{
+    position: absolute;
+    top: 0;
+    padding: 7px 0 0 13px;
+    transition: 200ms;
+    opacity: 0.5;
+}
+
+.form-control:focus + .ph-area, .form-control:valid + .ph-area{
+font-size: 80%;
+transform: translate3d(0,-100%,0);
+opacity: 1;
+color: #fff;
+}
+
+@media(max-width: 575.98px){
+    .wrapper {width: 100%}
+}
