@@ -1,5 +1,4 @@
 import { UserService } from './user.service';
-import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 // importo lso siguientes modulos
 import {HttpClient} from '@angular/common/http';
@@ -23,6 +22,6 @@ export class RolService {
    }
 
    // listo mis roles
-   listarRoles(token):Observable<any> {
-   }
+  //  listarRoles(token):Observable<any> {
+  //  }
 }

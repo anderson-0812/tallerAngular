@@ -8,7 +8,7 @@ const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'inicio', component: InicioComponent},
-  {path: '**',component: InicioComponent}// me sirve que si pongo /cualquiercosa me redireccione a inicio
+  {path: '**', component: InicioComponent}// me sirve que si pongo /cualquiercosa me redireccione a inicio
 ];
 
 @NgModule({
