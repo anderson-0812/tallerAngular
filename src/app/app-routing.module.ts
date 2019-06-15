@@ -1,3 +1,4 @@
+import { RolComponent } from './components/rol/rol.component';
 import { LoginComponent } from './components/login/login.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -8,6 +9,7 @@ const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'inicio', component: InicioComponent},
+  {path: 'roles', component: RolComponent},
   {path: '**', component: InicioComponent}// me sirve que si pongo /cualquiercosa me redireccione a inicio
 ];
 

@@ -1,7 +1,7 @@
 import { UserService } from './user.service';
 import { Injectable } from '@angular/core';
 // importo lso siguientes modulos
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Rol } from '../models/rol';
 import { Global } from './global';
@@ -21,7 +21,10 @@ export class RolService {
     this.rolSeleccionado = new Rol();
    }
 
-   // listo mis roles
-  //  listarRoles(token):Observable<any> {
-  //  }
+   // listo mis roles observable => siempre va ahi esta esperando siempre a respuesta del server 
+   listarRoles(token): Observable<any> {
+    //  ledigo q mi peticion tiene cabeceras de tipo aplicacion/json y le envio un token 
+     const headers = new HttpHeaders().set('Content-Type', 'aplication/json').set('token', token);
+     return this.http.get(this.url + 'rol', {headers});
+   }
 }
