@@ -21,10 +21,38 @@ export class RolService {
     this.rolSeleccionado = new Rol();
    }
 
-   // listo mis roles observable => siempre va ahi esta esperando siempre a respuesta del server 
+   // listo mis roles observable => siempre va ahi esta esperando siempre a respuesta del server
    listarRoles(token): Observable<any> {
-    //  ledigo q mi peticion tiene cabeceras de tipo aplicacion/json y le envio un token 
+    //  ledigo q mi peticion tiene cabeceras de tipo aplicacion/json y le envio un token
      const headers = new HttpHeaders().set('Content-Type', 'aplication/json').set('token', token);
      return this.http.get(this.url + 'rol', {headers});
    }
+// Guardar Rol
+  guardarRol(token, rol: Rol): Observable<any> {
+    const params = JSON.stringify(rol);
+    const headers = new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
+
+    return this.http.post(this.url + 'rol', params, {headers});
+  }
+  // actualizar rol
+  alcualizarRol(token, rol: Rol): Observable<any> {
+    const params = JSON.stringify(rol);
+    const headers = new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
+
+
+    return this.http.put( `${this.url}rol/${rol._id}`, params, {headers});
+    
+  }
+
+  // eliminar
+  eliminarRol(token, idRol): Observable<any> {
+    console.log("Pruebaa");
+    
+    const headers = new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
+    
+
+    return this.http.delete( `${this.url}rol/${idRol}`, {headers});
+  }
 }
+
+
