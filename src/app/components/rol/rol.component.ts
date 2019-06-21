@@ -43,15 +43,14 @@ export class RolComponent implements OnInit {
         this.opcionBoton = 'Registrar';
         this.listarRoles();
         form.reset();
-      }, error => console.log(<any>error));
+      }, error => console.log(error as any));
     } else {
       this.rolService.guardarRol(this.token, form.value)
       .subscribe((res) => {
-        this.opcionBoton = 'Guardar';
-        console.log(form.value);
+        // console.log(form.value);
         this.listarRoles();
         form.reset();
-      }, error => console.log(<any> error));
+      }, error => console.log(error as any));
     }
   }
   // actualizar rol
