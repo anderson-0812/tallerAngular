@@ -29,8 +29,8 @@ export class UserService {
      const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
       // armo laurl/login/parametros
-     return this.http.post(this.url + 'login', params, {headers});
-    } 
+      return this.http.post(this.url + 'login', params, {headers});
+    }
     obtenerIdentidad() {
       // de mi json extraigo el campo identidad
       const identidad = JSON.parse(localStorage.getItem('identidad'));
@@ -50,9 +50,34 @@ export class UserService {
       if (token !== 'undefined') {
         this.token = token;
       } else {
-    this.token = null;
-  }
+        this.token = null;
+      }
 
       return this.token;
-}
+    }
+// CRUD DE USUARIO
+    registrarUsuario(token, usuario: User): Observable<any> {
+      const params = JSON.stringify(usuario);
+      const headers = new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
+
+      return this.http.post(this.url + 'usuario', params, {headers});
+    }
+
+    listarUsuarios(token): Observable<any> {
+      const headers = new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
+      return this.http.get(this.url + 'usuario',{headers});
+    }
+
+    actualizarUsuario(token, usuario: User): Observable<any> {
+      const params = JSON.stringify(usuario);
+      const headers =  new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
+
+      return this.http.put(this.url + `usuario/${usuario._id}`, params, {headers});
+    }
+
+    eliminarUsuario(token, idUsuario: number) {
+      const headers = new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
+
+      return this.http.delete(this.url + `usuario/${idUsuario}`, {headers});
+    }
 }
