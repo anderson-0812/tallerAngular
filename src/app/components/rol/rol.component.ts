@@ -47,7 +47,7 @@ export class RolComponent implements OnInit {
     } else {
       this.rolService.guardarRol(this.token, form.value)
       .subscribe((res) => {
-        // console.log(form.value);
+        // console.log(form.value); 
         this.listarRoles();
         form.reset();
       }, error => console.log(error as any));

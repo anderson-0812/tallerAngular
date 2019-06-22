@@ -4,6 +4,7 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { UserComponent } from './components/user/user.component';
+import { SalaComponent } from './components/sala/sala.component';
 
 const routes: Routes = [
   // Asignamos la ruta y componentes 
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'inicio', component: InicioComponent},
   {path: 'roles', component: RolComponent},
   {path: 'usuarios', component: UserComponent},
+  {path: 'salas', component: SalaComponent},
   {path: '**', component: InicioComponent}// me sirve que si pongo /cualquiercosa me redireccione a inicio
 ];
 

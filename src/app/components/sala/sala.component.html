@@ -1,0 +1,64 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="offset-md-2 col-md-4">
+      <h2 class="h1 font-weight-bold text-center py-3">Registrar Sala</h2>
+      <form #registrarSalaForm="ngForm" (ngSubmit)="guardarSala(registrarSalaForm)">
+        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="salaService.salaSeleccionada._id">
+        <div class="form-group col-md-8 pl-0">
+          <label class="font-weight-bold">Nombre de la sala</label>
+          <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="salaService.salaSeleccionada.name" required>
+          <span *ngIf="!name.valid && name.touched">!El nombre de la sala es obligatorio¡</span>
+        </div>
+        <div class="form-group col-md-8 pl-0">
+          <label class="font-weight-bold">Descripción de la sala</label>
+          <textarea name="description" class="form-control" #description="ngModel" [(ngModel)]="salaService.salaSeleccionada.description" rows="3" required></textarea>
+          <span *ngIf="!description.valid && description.touched">!La descripción de la sala es obligatorio¡</span>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!registrarSalaForm.form.valid">{{ opcionBoton }}</button>
+      </form>
+    </div>
+    <div class="col-md-4">
+      <h2 class="h1 font-weight-bold text-center py-3">Listado de salas</h2>
+      <table class="table">
+        <thead class="bg-primary">
+          <tr>
+            <th scope="col" class="text-white">QR Code</th>
+            <th scope="col" class="text-white">Nombre</th>
+            <th scope="col" class="text-white">Descripción</th>
+            <th scope="col" class="text-white">Operaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sala of salaService.salas">
+            <td><a class="btn btn-light" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-eye"></i></a></td>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="exampleModalLabel">QR Code</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="d-flex justify-content-center">
+                      <img src="http://api.qrserver.com/v1/create-qr-code/?size=200x200&data={{ sala._id }}">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <td>{{ sala.name }}</td>
+            <td>{{ sala.description }}</td>
+            <td>
+              <a class="btn btn-outline-primary mr-2" (click)="editarSala(sala)"><i class="far fa-edit text-warning"></i></a>
+              <a class="btn btn-outline-primary" (click)="eliminarSala(sala._id)"><i class="far fa-trash-alt text-danger"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
