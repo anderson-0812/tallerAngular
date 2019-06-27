@@ -1,0 +1,66 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="offset-md-2 col-md-3">
+      <!-- <h2 class="h1 font-weight-bold text-center py-3">Registrar Accesos</h2> -->
+      <!-- <form #registrarPermisoForm="ngForm" (ngSubmit)="guardarPermiso(registrarPermisoForm)">
+        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="permisosService.permisoSeleccionado._id">
+        <div class="form-group col-md-8 pl-0">
+          <label class="font-weight-bold">Dia del permiso</label>
+          <input type="text" class="form-control" name="day" #day="ngModel" [(ngModel)]="permisosService.permisoSeleccionado.day" required>
+          <span *ngIf="!day.valid && day.touched">!El dia del permiso es obligatorio¡</span>
+        </div>
+        <div class="form-group col-md-8 pl-0">
+          <label class="font-weight-bold">Hora de inicio del permiso </label>
+          <input name="start_time" type="time" class="form-control" #start_time="ngModel" [(ngModel)]="permisosService.permisoSeleccionado.start_time"  required>
+          <span *ngIf="!start_time.valid && start_time.touched">!La hora de inicio es obligatorio¡</span>
+        </div>
+        <div class="form-group col-md-8 pl-0">
+          <label class="font-weight-bold">hora de salida </label>
+          <input type="text" type="time" class="form-control" name="end_time" #end_time="ngModel" [(ngModel)]="permisosService.permisoSeleccionado.end_time" required>
+          <span *ngIf="!end_time.valid && end_time.touched">!La hora de salida es obligatoria¡</span>
+        </div>
+
+        <div class="form-group col-md-8 pl-0">
+          <label class="font-weight-bold">Rol</label>
+          <select name="rol" class="form-control" #rol="ngModel" [(ngModel)]="permisosService.permisoSeleccionado.rol">
+            <option *ngFor="let rol of rolService.roles" value="{{ rol._id }}">{{ rol.name }}</option>
+          </select>
+          <span *ngIf="!rol.valid && rol.touched">¡Debes seleccionar un rol!</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!registrarPermisoForm.form.valid">{{ opcionBoton }}</button>
+      </form> -->
+    </div>
+    <div class="col-md-9 mx-auto">
+      <h2 class="h1 font-weight-bold text-center py-3">Listado de accesos</h2>
+      <table class="table">
+        <thead class="bg-primary">
+          <tr>
+            <!-- <th scope="col" class="text-white">#</th> -->
+            <th scope="col" class="text-white">Date</th>
+            <th scope="col" class="text-white">Hour</th>
+            <th scope="col" class="text-white">User</th>
+            <th scope="col" class="text-white">Sala</th>
+            <th scope="col" class="text-white">TypeAcceso</th>
+            <!-- <th scope="col" class="text-white">acciones</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let acceso of accesoService.accesos">
+            <!-- <td>{{ acceso._id }}</td> -->
+            <td>{{ acceso.date }}</td>
+            <td>{{ acceso.hour }}</td>
+            <td>{{ acceso.user }}</td>
+            <td>{{ acceso.sala }}</td>
+            <td>{{ acceso.typeAccess }}</td>
+            <!-- <td>
+              <a class="btn btn-outline-primary mr-2"  ><i class="far fa-edit text-warning"></i></a>
+              <a class="btn btn-outline-primary" ><i class="far fa-trash-alt text-danger"></i></a>
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,4 @@
+import { AccesoComponent } from './components/acceso/acceso.component';
 import { PermisoComponent } from './components/permiso/permiso.component';
 import { RolComponent } from './components/rol/rol.component';
 import { LoginComponent } from './components/login/login.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'usuarios', component: UserComponent},
   {path: 'salas', component: SalaComponent},
   {path: 'permisos', component: PermisoComponent},
+  {path: 'acceso', component: AccesoComponent},
   {path: '**', component: InicioComponent}// me sirve que si pongo /cualquiercosa me redireccione a inicio
 ];
 
