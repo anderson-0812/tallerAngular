@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -14,6 +15,7 @@ import { UserComponent } from './components/user/user.component';
 import { SalaComponent } from './components/sala/sala.component';
 import { PermisoComponent } from './components/permiso/permiso.component';
 import { AccesoComponent } from './components/acceso/acceso.component';
+import { UsuarioGuard } from './services/usuario.guard';
 // import { RolComponent } from './models/rol/rol.component';
 
 @NgModule({
@@ -34,7 +36,8 @@ import { AccesoComponent } from './components/acceso/acceso.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  //  agregamos el user service y el usuario guard
+  providers: [UserService, UsuarioGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
