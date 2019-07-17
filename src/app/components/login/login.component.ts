@@ -33,8 +33,10 @@ export class LoginComponent implements OnInit {
   }
 
     iniciarSesion(form: NgForm) {
+      console.log('prueva fornt iniciar sesion')
       this.usuarioService.iniciarSesion(this.usuario).subscribe((res) => {
-        // console.log(res);
+        console.log('Res de login en componet');
+        console.log(res);
         this.identidad = res.usuario;
 
         if (!this.identidad || !this.identidad._id) {
@@ -47,6 +49,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/inicio']);
       }
       , error => console.log(error as any));
+
+      console.log('Fin metodo')
     }
 
     obtenerToken() {

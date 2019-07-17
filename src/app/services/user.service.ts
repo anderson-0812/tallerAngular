@@ -21,12 +21,17 @@ export class UserService {
    }
    // Login
    iniciarSesion(usuario, token = null): Observable<any> {
+
+    console.log('Prueba services user')
+    console.log(usuario)
      if (token != null) {
        usuario.token = token;
       }
 
      const params = JSON.stringify(usuario);
-     const headers = new HttpHeaders().set('Content-Type', 'application/json');
+     const headers = new HttpHeaders().set('Content-Type', 'application/json')
+     .set('Access-Control-Allow-Origin',"*")
+     .set('Access-Control-Allow-Headers',"Origin, X-Requested-With, Authorization");
 
       // armo laurl/login/parametros
       return this.http.post(this.url + 'login', params, {headers});
