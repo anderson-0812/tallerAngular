@@ -63,25 +63,37 @@ export class UserService {
 // CRUD DE USUARIO
     registrarUsuario(token, usuario: User): Observable<any> {
       const params = JSON.stringify(usuario);
-      const headers = new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
+      const headers = new HttpHeaders().set('Content-Type', 'application/json')
+      .set('Access-Control-Allow-Origin',"*")
+      .set('Access-Control-Allow-Headers',"Origin, X-Requested-With, Authorization")
+      .set('token', token);
 
       return this.http.post(this.url + 'usuario', params, {headers});
     }
 
     listarUsuarios(token): Observable<any> {
-      const headers = new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
+      const headers = new HttpHeaders().set('Content-Type', 'application/json')
+      .set('Access-Control-Allow-Origin',"*")
+      .set('Access-Control-Allow-Headers',"Origin, X-Requested-With, Authorization")
+      .set('token', token);
       return this.http.get(this.url + 'usuario',{headers});
     }
 
     actualizarUsuario(token, usuario: User): Observable<any> {
       const params = JSON.stringify(usuario);
-      const headers =  new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
+      const headers =  new HttpHeaders().set('Content-Type', 'application/json')
+      .set('Access-Control-Allow-Origin',"*")
+      .set('Access-Control-Allow-Headers',"Origin, X-Requested-With, Authorization")
+      .set('token', token);
 
       return this.http.put(this.url + `usuario/${usuario._id}`, params, {headers});
     }
 
     eliminarUsuario(token, idUsuario: number) {
-      const headers = new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
+      const headers = new HttpHeaders().set('Content-Type', 'application/json')
+      .set('Access-Control-Allow-Origin',"*")
+      .set('Access-Control-Allow-Headers',"Origin, X-Requested-With, Authorization")
+      .set('token', token);
 
       return this.http.delete(this.url + `usuario/${idUsuario}`, {headers});
     }

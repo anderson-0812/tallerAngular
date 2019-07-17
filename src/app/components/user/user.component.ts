@@ -1,3 +1,4 @@
+import { User } from 'src/app/models/user';
 import { Component, OnInit } from '@angular/core';
 // hacemos importaciones para usary crear un crud 
 import { RolService } from 'src/app/services/rol.service';
@@ -28,21 +29,49 @@ export class UserComponent implements OnInit {
   }
 
   obtenerRoles() {
-    this.rolService.listarRoles(this.token).subscribe(res => this.rolService.roles = res.roles, error => console.log(error as any));
+    this.rolService.listarRoles(this.token).subscribe(
+      (res) => {
+        console.log("Obtener roles");
+        console.log(res);
+        this.rolService.roles = res.rolDB;
+      }, error => console.log(error as any));
   }
 
   obtenerUsuarios() {
     // tslint:disable-next-line:max-line-length
-    this.usuarioService.listarUsuarios(this.token).subscribe(res => this.usuarioService.usuarios = res.usuarios, error => console.log(error as any));
+    this.usuarioService.listarUsuarios(this.token).subscribe(
+      (res) => {
+        console.log("Obtener Usuarios");
+        console.log(res);
+        this.usuarioService.usuarios = res.usuarioDB;
+      }, error => console.log(error as any));
   }
 
   guardarUsuario(form: NgForm) {
-    this.usuarioService.registrarUsuario(this.token, form.value).subscribe((res) => {
-      this.obtenerUsuarios();
-      form.reset();
-    }, error => console.log(error as any));
+    if (form.value._id) {
+      console.log("Entro a editar usuario ");
+      this.usuarioService.actualizarUsuario(this.token, form.value)
+      .subscribe((res) => {
+        // this.opcionBoton = 'Registrar';
+        // this.obtenerRoles();
+        this.obtenerUsuarios();
+        form.reset();
+        // console.log(res);
+        // this.listarRoles();
+      }, error => console.log(error as any));
+    } else {
+      this.usuarioService.registrarUsuario(this.token, form.value).subscribe((res) => {
+        this.obtenerUsuarios();
+        form.reset();
+      }, error => console.log(error as any));
+    }  
   }
-
+// actualizar rol
+editarUsuario(user: User) {
+  // this.opcionBoton = 'Editar';
+  this.usuarioService.usuarioSeleccionado = user;
+  console.log(this.usuarioService);
+}
   eliminarUsuario(idUsuario: number) {
     if (confirm('Estas seguro de eliminar este usuario?')) {
       // tslint:disable-next-line:max-line-length

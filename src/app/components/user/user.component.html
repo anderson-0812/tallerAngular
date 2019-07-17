@@ -3,7 +3,8 @@
     <div class="col-md-6 mx-auto">
       <form #registrarUsuarioForm="ngForm" (ngSubmit)="guardarUsuario(registrarUsuarioForm)">
         <div class="form-row">
-          <input type="hidden" name="_id">
+        <input  type="hidden" name="_id" #_id="ngModel" [(ngModel)]="usuarioService.usuarioSeleccionado._id">
+
           <div class="form-group col-md-6">
             <label class="font-weight-bold">Primer Nombre</label>
             <input type="text" class="form-control" name="firstName" #firstName="ngModel" [(ngModel)]="usuarioService.usuarioSeleccionado.firstName" required>
@@ -75,7 +76,10 @@
             <td>{{usuario.firstName}} {{usuario.secondName}}</td>
             <td>{{usuario.firstSurname}} {{usuario.secondSurname}}</td>
             <td>{{usuario.username}}</td>
-            <td><a class="btn btn-outline-primary" (click)="eliminarUsuario(usuario._id)"><i class="far fa-trash-alt text-danger"></i></a></td>
+            <td>
+              <a class="btn btn-outline-primary" (click)="eliminarUsuario(usuario._id)"><i class="far fa-trash-alt text-danger"></i></a>
+              <a class="btn btn-outline-primary" (click)="editarUsuario(usuario)"><i class="far fa-edit text-warning"></i></a>
+            </td>
           </tr>
         </tbody>
       </table>
