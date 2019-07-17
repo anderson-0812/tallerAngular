@@ -31,7 +31,7 @@ export class RolComponent implements OnInit {
     this.rolService.listarRoles(this.token).subscribe(
       (res) => {
         console.log(res);
-        this.rolService.roles = res.roles as Rol[];
+        this.rolService.roles = res.rolDB as Rol[];
       }
       , error => console.log(error as any));
   }
@@ -43,6 +43,8 @@ export class RolComponent implements OnInit {
         this.opcionBoton = 'Registrar';
         this.listarRoles();
         form.reset();
+        // console.log(res);
+        // this.listarRoles();
       }, error => console.log(error as any));
     } else {
       this.rolService.guardarRol(this.token, form.value)
