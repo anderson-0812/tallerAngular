@@ -37,7 +37,10 @@ export class RolComponent implements OnInit {
   }
   // guardo rol
   guardarRol(form: NgForm) {
-    if (form.value.id) {
+    // console.log("Valor form ");
+    // console.log(form.value);
+    if (form.value._id) {
+      console.log("Entro a editar rol ");
       this.rolService.alcualizarRol(this.token, form.value)
       .subscribe((res) => {
         this.opcionBoton = 'Registrar';
@@ -59,6 +62,7 @@ export class RolComponent implements OnInit {
   editarRol(rol: Rol) {
     this.opcionBoton = 'Editar';
     this.rolService.rolSeleccionado = rol;
+    console.log(this.rolService);
   }
   // eliminar rol
   eliminarRol(idRol: string) {

@@ -22,7 +22,7 @@ export class UserComponent implements OnInit {
    }
 
   ngOnInit() {
-    console.log('!Componente usuario cargoso');
+    console.log('!Componente usuario cargado');
     this.obtenerRoles();
     this.obtenerUsuarios();
   }

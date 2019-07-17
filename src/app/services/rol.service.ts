@@ -46,7 +46,7 @@ export class RolService {
 
   // eliminar
   eliminarRol(token, idRol): Observable<any> {
-    console.log("Pruebaa");
+    // console.log("Pruebaa");
     
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
     
