@@ -10,8 +10,8 @@ export class UsuarioGuard implements CanActivate {
 
     canActivate() {
         const identidad = this.userService.obtenerIdentidad();
-        console.log("proteccion de urls, json Identidad");
-        console.log(identidad);
+        // console.log("proteccion de urls, json Identidad");
+        // console.log(identidad);
         // if (identidad && identidad.Rol === '5d2ed988a4d6d054c44bc1aa') {
         if (identidad && identidad.username === 'admin') {
             return true;
