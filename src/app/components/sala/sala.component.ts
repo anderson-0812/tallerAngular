@@ -28,7 +28,10 @@ export class SalaComponent implements OnInit {
 
   listarSalas() {
     this.salaService.listarSalas(this.token)
-    .subscribe(res => this.salaService.salas = res.salas as Sala[], error => console.log(<any>error));
+    .subscribe((res) => {
+      console.log(res);
+      this.salaService.salas = res.salaDB as Sala[];
+    }, error => console.log(<any>error));
   }
 
   guardarSala(form: NgForm) {
