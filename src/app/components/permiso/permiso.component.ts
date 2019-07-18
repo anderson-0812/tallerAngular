@@ -30,7 +30,7 @@ export class PermisoComponent implements OnInit {
     
   }
   obtenerRoles() {
-    this.rolService.listarRoles(this.token).subscribe(res => this.rolService.roles = res.roles, error => console.log(error as any));
+    this.rolService.listarRoles(this.token).subscribe(res => this.rolService.roles = res.rolDB, error => console.log(error as any));
   }
   listarPermisos() {
     // tslint:disable-next-line:max-line-length
@@ -47,6 +47,8 @@ export class PermisoComponent implements OnInit {
       }, error => console.log(error as any));
     } else {
       this.permisosService.guardarPermiso(this.token, form.value).subscribe((res) => {
+        console.log("Guardar permiso");
+        console.log(res);
         this.listarPermisos();
         this.obtenerRoles();
         form.reset();
