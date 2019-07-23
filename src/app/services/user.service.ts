@@ -68,7 +68,7 @@ export class UserService {
       .set('Access-Control-Allow-Headers',"Origin, X-Requested-With, Authorization")
       .set('token', token);
 
-      return this.http.post(this.url + 'usuario', params, {headers});
+      return this.http.post(this.url + 'usuarios', params, {headers});
     }
 
     listarUsuarios(token): Observable<any> {
@@ -76,7 +76,7 @@ export class UserService {
       .set('Access-Control-Allow-Origin',"*")
       .set('Access-Control-Allow-Headers',"Origin, X-Requested-With, Authorization")
       .set('token', token);
-      return this.http.get(this.url + 'usuario',{headers});
+      return this.http.get(this.url + 'usuarios',{headers});
     }
 
     actualizarUsuario(token, usuario: User): Observable<any> {
@@ -86,7 +86,7 @@ export class UserService {
       .set('Access-Control-Allow-Headers',"Origin, X-Requested-With, Authorization")
       .set('token', token);
 
-      return this.http.put(this.url + `usuario/${usuario._id}`, params, {headers});
+      return this.http.put(this.url + `usuarios/${usuario._id}`, params, {headers});
     }
 
     eliminarUsuario(token, idUsuario: number) {
@@ -95,6 +95,6 @@ export class UserService {
       .set('Access-Control-Allow-Headers',"Origin, X-Requested-With, Authorization")
       .set('token', token);
 
-      return this.http.delete(this.url + `usuario/${idUsuario}`, {headers});
+      return this.http.delete(this.url + `usuarios/${idUsuario}`, {headers});
     }
 }
