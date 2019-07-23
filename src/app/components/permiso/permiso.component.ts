@@ -79,6 +79,7 @@ export class PermisoComponent implements OnInit {
 
   eliminarPermiso(idPermiso: string) {
     if (confirm('Estas seguro de eliminar este permiso?')) {
+      // tslint:disable-next-line:max-line-length
       this.permisosService.eliminarPermiso(this.token, idPermiso).subscribe(res => this.listarPermisos(), error => console.log(error as any));
     }
   }
