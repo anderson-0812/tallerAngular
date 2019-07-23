@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
     iniciarSesion(form: NgForm) {
-      console.log('prueva fornt iniciar sesion')
+      console.log('prueba fornt iniciar sesion')
       this.usuarioService.iniciarSesion(this.usuario).subscribe((res) => {
         console.log('Res de login en componet');
         console.log(res);
