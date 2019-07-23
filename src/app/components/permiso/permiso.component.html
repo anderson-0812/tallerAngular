@@ -29,56 +29,50 @@
           <span *ngIf="!rol.valid && rol.touched">¡Debes seleccionar un rol!</span>
         </div>
 
+        <div class="form-group col-md-8 pl-0">
+          <label class="font-weight-bold">Sala</label>
+          <select name="sala" class="form-control" #rol="ngModel" [(ngModel)]="permisosService.permisoSeleccionado.sala">
+            <option *ngFor="let sala of salaService.salas" value="{{ sala._id }}">{{ sala.name }}</option>
+          </select>
+          <span *ngIf="!rol.valid && sala.touched">¡Debes seleccionar una sala!</span>
+        </div>
+
         <button type="submit" class="btn btn-primary" [disabled]="!registrarPermisoForm.form.valid">{{ opcionBoton }}</button>
       </form>
     </div>
-    <div class="col-md-4">
-      <h2 class="h1 font-weight-bold text-center py-3">Listado de permisos</h2>
-      <table class="table">
-        <thead class="bg-primary">
-          <tr>
-            <th scope="col" class="text-white">#</th>
-            <th scope="col" class="text-white">Day</th>
-            <th scope="col" class="text-white">Star Time</th>
-            <th scope="col" class="text-white">End Time</th>
-            <th scope="col" class="text-white">rol</th>
-            <th scope="col" class="text-white">state</th>
-            <th scope="col" class="text-white">acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let permiso of permisosService.permisos">
-            <td><a class="btn btn-light" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-eye"></i></a></td>
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="exampleModalLabel">QR Code</h5>
-                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="d-flex justify-content-center">
-                      <img src="http://api.qrserver.com/v1/create-qr-code/?size=200x200&data={{ permiso._id }}">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <td>{{ permiso.day }}</td>
-            <td>{{ permiso.start_time }}</td>
-            <td>{{ permiso.end_time }}</td>
-            <td>{{ permiso.rol }}</td>
-            <td>{{ permiso.state }}</td>
-            <td>
-              <a class="btn btn-outline-primary mr-2" (click)="editarPermiso(permiso)" ><i class="far fa-edit text-warning"></i></a>
-              <a class="btn btn-outline-primary" ><i class="far fa-trash-alt text-danger"></i></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    
+  </div>
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+        <h2 class="h1 font-weight-bold text-center py-3">Listado de permisos</h2>
+        <table class="table">
+          <thead class="bg-primary">
+            <tr>
+              <th scope="col" class="text-white">Day</th>
+              <th scope="col" class="text-white">Star Time</th>
+              <th scope="col" class="text-white">End Time</th>
+              <th scope="col" class="text-white">rol</th>
+              <th scope="col" class="text-white">sala</th>
+              <th scope="col" class="text-white">state</th>
+              <th scope="col" class="text-white">acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let permiso of permisosService.permisos">
+              
+              <td>{{ permiso.day }}</td>
+              <td>{{ permiso.start_time }}</td>
+              <td>{{ permiso.end_time }}</td>
+              <td>{{ permiso.rol }}</td>
+              <td>{{ permiso.sala }}</td>
+              <td>{{ permiso.state }}</td>
+              <td>
+                <a class="btn btn-outline-primary mr-2" (click)="editarPermiso(permiso)" ><i class="far fa-edit text-warning"></i></a>
+                <a class="btn btn-outline-primary" (click)="eliminarPermiso(permiso._id)"><i class="far fa-trash-alt text-danger"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
     </div>
   </div>
 </div>

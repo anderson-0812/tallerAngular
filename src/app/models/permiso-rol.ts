@@ -1,11 +1,12 @@
 export class PermisoRol {
     // tslint:disable-next-line:variable-name
-    constructor(_id = '', day = '', start_time = '', end_time = '', rol = '', state = true) {
+    constructor(_id = '', day = '', start_time = '', end_time = '', rol = '', sala = '', state = true) {
       this._id = _id;
       this.day = day;
       this.start_time = start_time;
       this.end_time = end_time;
       this.rol = rol;
+      this.sala = sala;
       this.state = state;
     }
 
@@ -17,5 +18,6 @@ export class PermisoRol {
     // tslint:disable-next-line:variable-name
     end_time: string;
     rol: string;
+    sala: string;
     state: boolean;
   }

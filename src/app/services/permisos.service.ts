@@ -27,16 +27,36 @@ export class PermisosService {
 
   guardarPermiso(token, permiso: PermisoRol): Observable<any> {
     const params = JSON.stringify(permiso);
-    const headers = new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
-
+    // const headers = new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
+    
+    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+    .set('Access-Control-Allow-Origin',"*")
+    .set('Access-Control-Allow-Headers',"Origin, X-Requested-With, Authorization")
+    .set('token', token);
+    
     return this.http.post(this.url + 'permiso', params, {headers});
   }
 
   actualizarPermiso(token, permiso: PermisoRol): Observable<any> {
     const params = JSON.stringify(permiso);
-    const headers = new HttpHeaders().set('Content-Type', 'application/json').set('token', token);
+
+    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+    .set('Access-Control-Allow-Origin',"*")
+    .set('Access-Control-Allow-Headers',"Origin, X-Requested-With, Authorization")
+    .set('token', token);
 
     return this.http.put(`${this.url}permiso/${permiso._id}`, params, {headers});
+  }
+
+  eliminarPermiso(token, idPermiso) {
+
+    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+    .set('Access-Control-Allow-Origin',"*")
+    .set('Access-Control-Allow-Headers',"Origin, X-Requested-With, Authorization")
+    .set('token', token);
+    
+
+    return this.http.delete( `${this.url}permisos/${idPermiso}`, {headers});
   }
 
 }
