@@ -27,7 +27,7 @@ export class AccesoComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     this.accesoService.listarAccesos(this.token).subscribe((res) =>{
       // tslint:disable-next-line:no-unused-expression
-      this.accesoService.accesos = res.permisos as Acceso[];
+      this.accesoService.accesos = res.accesos as Acceso[];
       console.log(res);
     }, error => console.log(error as any));
   }
