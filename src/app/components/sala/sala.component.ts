@@ -29,6 +29,7 @@ export class SalaComponent implements OnInit {
   listarSalas() {
     this.salaService.listarSalas(this.token)
     .subscribe((res) => {
+      // console.log("Salas");
       console.log(res);
       this.salaService.salas = res.salaDB as Sala[];
     }, error => console.log(<any>error));

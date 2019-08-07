@@ -81,6 +81,8 @@ export class UserService {
 
     actualizarUsuario(token, usuario: User): Observable<any> {
       const params = JSON.stringify(usuario);
+      console.log('Paramns');
+      console.log(params);
       const headers =  new HttpHeaders().set('Content-Type', 'application/json')
       .set('Access-Control-Allow-Origin',"*")
       .set('Access-Control-Allow-Headers',"Origin, X-Requested-With, Authorization")
